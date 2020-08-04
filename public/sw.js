@@ -61,7 +61,7 @@ self.addEventListener('fetch', (event) => {
         console.log('Fetch failed; returning offline page instead.', error);
 
         const cache = await caches.open(CACHE_NAME);
-        const cachedResponse = await cache.match(OFFLINE_URL);
+        const cachedResponse = await cache.match(INDEX_URL);
         return cachedResponse;
       }
     })());
@@ -100,7 +100,7 @@ self.addEventListener('fetch', function(event) {
     return mapQueryStr.join('&')
   }
 
-  if (url.indexOf('.gif') !== -1) {
+  if (url.indexOf('.gif') !== -1 && url.indexOf('interaction') !== -1) {
     const url = event.request.url.split('?')[0]
     const queryParamsObj = getQueryParams(event.request.url)
     const finalUrl = `${url}?${mapQueryParams(queryParamsObj)}`

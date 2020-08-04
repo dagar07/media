@@ -43,6 +43,7 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   if (event.request.mode === 'navigate') {
+    console.log('navigate response', event.request)
     event.respondWith((async () => {
       try {
         // First, try to use the navigation preload response if it's supported.
@@ -100,6 +101,8 @@ self.addEventListener('fetch', function(event) {
     return mapQueryStr.join('&')
   }
 
+  console.log('response fetch before', modifyRequest)
+
   if (url.indexOf('.gif') !== -1 && url.indexOf('interaction') !== -1) {
     const url = event.request.url.split('?')[0]
     const queryParamsObj = getQueryParams(event.request.url)
@@ -112,6 +115,8 @@ self.addEventListener('fetch', function(event) {
       }
     )
   }
+
+  console.log('response fetch after', modifyRequest)
 
   event.respondWith(
     caches.match(modifyRequest)

@@ -3,7 +3,7 @@ const CACHE_NAME = 'media';
 // Incrementing OFFLINE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 // const OFFLINE_VERSION = 1;
-const OFFLINE_URL = '/index.html';
+const OFFLINE_URL = '/media/index.html';
 const KEY_MAP = {
   interaction: 'event',
   client: 'customer',

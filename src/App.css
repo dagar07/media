@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+.word-break {
+  display: flex;
+  flex: 1;
+  flex-wrap: nowrap;
+  margin: 0 24%;
+  word-break: break-all;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

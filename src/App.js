@@ -26,13 +26,13 @@ class App extends Component {
           <div>
             Request from server
             <img src={reqSrc} alt='' />
-            <span>{reqSrc}</span>
+            <span className='word-break'>{reqSrc}</span>
           </div>
           <br/><br/><br/>
           <div>
             Response from server
             <img src={resSrc} alt='' />
-            <span>{resSrc}</span>
+            <span className='word-break'>{resSrc}</span>
           </div>
         </header>
       </div>

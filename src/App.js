@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
+class App extends Component {
 
-  const handleTheElementClick = () => {
+  state = {
+    reqSrc: '/media/angel.gif?interaction=UserEve&client=ad_media&os_name=macos&x1=google&x2=email&x3=pdfconvert&landing_url=abcd1'
+  }
+
+  handleTheElementClick = () => {
     fetch(
-      '/angel.gif?interaction=UserEve&client=ad_media&os_name=macos&x1=google&x2=email&x3=pdfconvert&landing_url=abcd1'
+      '/media/angel.gif?interaction=UserEve&client=ad_media&os_name=macos&x1=google&x2=email&x3=pdfconvert&landing_url=abcd1'
     ).then((res) => res)
     .then((res) => {
-      console.log(res)
+      this.setState({
+        resSrc: res.url
+      })
+      console.log('res', res)
     })
   }
 
-  return (
-    <div className="App" onClick={handleTheElementClick}>
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
-  );
+  render () {
+    const { reqSrc, resSrc } = this.state
+    return (
+      <div className="App" onClick={this.handleTheElementClick}>
+        <header className="App-header">
+          <div>
+            Request from server
+            <img src={reqSrc} alt='' />
+            <span>{reqSrc}</span>
+          </div>
+          <br/><br/><br/>
+          <div>
+            Response from server
+            <img src={resSrc} alt='' />
+            <span>{resSrc}</span>
+          </div>
+        </header>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App

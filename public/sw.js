@@ -112,7 +112,7 @@ self.addEventListener('fetch', function(event) {
       }
     )
   }
-  console.log(modifyRequest)
+
   event.respondWith(
     caches.match(modifyRequest)
       .then(function(response) {
@@ -124,7 +124,7 @@ self.addEventListener('fetch', function(event) {
         return fetch(modifyRequest).then(
           function(response) {
             // Check if we received a valid response
-            console.log('service workder', response)
+            
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
             }

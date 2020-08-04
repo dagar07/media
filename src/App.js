@@ -15,7 +15,6 @@ class App extends Component {
       this.setState({
         resSrc: res.url
       })
-      console.log('res', res)
     })
   }
 
